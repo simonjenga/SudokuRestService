@@ -14,6 +14,33 @@ import com.sudoku.restservice.constants.SudokuStatus;
 @Service("sudokuService")
 public class SudokuService {
 
+	/** Obtain a list of free cells from the puzzle */
+	private int[][] getFreeCellList(int[][] grid) {
+		// Determine the number of free cells
+		int numberOfFreeCells = 0;
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (grid[i][j] == 0) {
+					numberOfFreeCells++;
+				}
+			}
+		}
+
+		// Store free cell positions into freeCellList
+		int[][] freeCellList = new int[numberOfFreeCells][2];
+		int count = 0;
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (grid[i][j] == 0) {
+					freeCellList[count][0] = i;
+					freeCellList[count++][1] = j;
+				}
+			}
+		}
+		 // return a multi-dimensional array of free cells
+		return freeCellList;
+	}
+
 	/** Check whether grid[i][j] is valid in the grid */
 	private boolean isValid(int[][] grid, int row, int column, int value) {
 		// Check whether grid[i][j] is valid at the i's row

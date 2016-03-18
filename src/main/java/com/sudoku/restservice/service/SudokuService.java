@@ -14,6 +14,16 @@ import com.sudoku.restservice.constants.SudokuStatus;
 @Service("sudokuService")
 public class SudokuService {
 
+	/** Validate moves on Sudoku puzzle */
+	private String validateMovesOnSudokuPuzzle(int row, int column, int value,
+			int[][] grid) {
+		if (this.isValid(grid, row, column, value)) {
+			return SudokuStatus.VALID_MOVE;
+		} else {
+			return SudokuStatus.INVALID_MOVE;
+		}
+	}
+
 	/** Obtain a list of free cells from the puzzle */
 	private int[][] getFreeCellList(int[][] grid) {
 		// Determine the number of free cells

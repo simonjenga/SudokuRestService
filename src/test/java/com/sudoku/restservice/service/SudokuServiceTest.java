@@ -46,5 +46,37 @@ public class SudokuServiceTest {
 		// insert valid value at last 3x3 cell
 		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(8, 8, 3, SudokuGrid.GRID_PROD));
 		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(6, 6, 6, SudokuGrid.GRID_PROD));
+	}
+	
+	/**
+     * This test should testInsertValidMoveInRow.
+     * 
+     * @throws Exception If something goes wrong
+     */
+	@Test
+	public void testInsertValidMoveInRow() throws Exception {
+		final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+		
+		// insert valid value at first row, fourth column
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(0, 3, 6, SudokuGrid.GRID_PROD));
+		
+		// insert valid value at sixth row, ninth column
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(5, 8, 4, SudokuGrid.GRID_PROD));
+	}
+	
+	/**
+     * This test should testInsertValidMoveInColumn.
+     * 
+     * @throws Exception If something goes wrong
+     */
+	@Test
+	public void testInsertValidMoveInColumn() throws Exception {
+		final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+		
+		// insert valid value at second column, fifth row
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(4, 1, 6, SudokuGrid.GRID_PROD));
+		
+		// insert valid value at fifth column, seventh row
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(6, 4, 3, SudokuGrid.GRID_PROD));
 	}	
 }

@@ -111,4 +111,31 @@ public class SudokuServiceTest {
 		// insert invalid value at second row, second column
 		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(1, 1, 8, SudokuGrid.GRID_PROD));
 	}
+	
+	/**
+     * This test should testInsertInValidMoveInColumn.
+     * 
+     * @throws Exception If something goes wrong
+     */
+	@Test
+	public void testInsertInValidMoveInColumn() throws Exception {
+		final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
+		
+		// insert invalid value at fith column, fifth row
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(4, 4, 6, SudokuGrid.GRID_PROD));
+	}
+	
+	/**
+     * This test should testInsertInValidInputInSudoku.
+     * 
+     * @throws Exception If something goes wrong
+     */
+	@Test
+	public void testInsertInValidInputInSudoku() throws Exception {
+		final String result = SudokuStatus.INVALID_INPUT;
+		
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(9, 9, 10, SudokuGrid.GRID_PROD));
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(-1, -1, -1, SudokuGrid.GRID_PROD));
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(10, -2, 15, SudokuGrid.GRID_PROD));
+	}
 }

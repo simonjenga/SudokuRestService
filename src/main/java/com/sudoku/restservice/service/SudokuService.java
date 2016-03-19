@@ -22,7 +22,7 @@ public class SudokuService {
 		} else {
 		    if (this.validateMovesOnSudokuPuzzle(row, column, value, grid).equals(SudokuStatus.VALID_MOVE)) {
 			    grid[row][column] = value;
-			    if (this.getFreeCellList(grid).length > 0) {
+			    if (this.getFreeCellList(grid) > 0) {
 				    return SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
 			    } else {
 				    return SudokuStatus.VALID_MOVE_SUDOKU_COMPLETE;
@@ -44,7 +44,7 @@ public class SudokuService {
 	}
 
     /** Obtain a list of free cells from the puzzle */
-	private int[][] getFreeCellList(int[][] grid) {
+	private int getFreeCellList(int[][] grid) {
 		// Determine the number of free cells
 		int numberOfFreeCells = 0;
 		for (int i = 0; i < 9; i++) {
@@ -54,20 +54,8 @@ public class SudokuService {
 				}
 			}
 		}
-
-		// Store free cell positions into freeCellList
-		int[][] freeCellList = new int[numberOfFreeCells][2];
-		int count = 0;
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				if (grid[i][j] == 0) {
-					freeCellList[count][0] = i;
-					freeCellList[count++][1] = j;
-				}
-			}
-		}
 		 // return a multi-dimensional array of free cells
-		return freeCellList;
+		return numberOfFreeCells;
 	}
 
     /** Check whether grid[i][j] is valid in the grid */

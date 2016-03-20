@@ -138,4 +138,20 @@ public class SudokuServiceTest {
 		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(-1, -1, -1, SudokuGrid.GRID_PROD));
 		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(10, -2, 15, SudokuGrid.GRID_PROD));
 	}
+	
+	/**
+     * This test should testInsertValidInputAndCompleteSudoku.
+     * 
+     * @throws Exception If something goes wrong
+     */
+	@Test
+	public void testInsertValidInputAndCompleteSudoku() throws Exception {
+		final String result = SudokuStatus.VALID_MOVE_SUDOKU_COMPLETE;
+		
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(0, 0, 7, SudokuGrid.GRID_TEST));
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(8, 8, 7, SudokuGrid.GRID_TEST));
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(0, 8, 8, SudokuGrid.GRID_TEST));
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(8, 0, 6, SudokuGrid.GRID_TEST));
+		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(4, 4, 1, SudokuGrid.GRID_TEST));
+	}
 }

@@ -45,5 +45,24 @@ public class SudokuControllerTest {
     public void setUp() throws Exception {
         this.baseURL = "http://localhost:8080/SudokuRestService/sudokuservice/sudoku";
         this.template = new RestTemplate();
-    }    
+    }
+    
+    /**
+     * This test should testControllerInsertValidMoveIn3x3Cell.
+     * 
+     * @throws Exception If something goes wrong
+     */
+    @Test
+	public void testControllerInsertValidMoveIn3x3Cell() throws Exception {
+    	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+    	
+        ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=0&column=0&value=7"), String.class);
+        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("0", "0", "7");
+        
+        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
+        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        
+        Assert.assertEquals(result, response1.getBody());
+        Assert.assertEquals(result, response2.getBody());
+    }
 }

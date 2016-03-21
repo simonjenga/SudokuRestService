@@ -27,29 +27,3 @@ This will create a distributable WAR file and deploy it in the embedded Tomcat S
 To interact with the RESTful web services, open a web browser and execute any of the following URLs at the address bar:
 
 ```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=5```
-
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=3&column=3&value=8```
-
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=5&column=8&value=4```
-
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=-1&column=9&value=10```
-
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=4&column=3&value=2```
-
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=9&column=9&value=15```
-
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=a```
-
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=```
-
-Alternatively, you can use the web browser plugin/addon called RESTClient(a debugger for RESTful web services) to enable you to interact with the REST services.
-
-To run Unit tests in this project, execute the following:
-
-```mvn clean test```
-
-### Instructions
-
-Eclipse users run `mvn eclipse:eclipse` and then import the project or just import the code as a Maven project into IntelliJ, NetBeans, or Eclipse.
-
-To generate project documentation of Java source files (Javadoc), run `mvn javadoc:javadoc`

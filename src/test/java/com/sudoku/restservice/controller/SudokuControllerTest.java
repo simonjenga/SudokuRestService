@@ -1,5 +1,19 @@
 package com.sudoku.restservice.controller;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.web.client.RestTemplate;
+
+import com.sudoku.restservice.constants.SudokuStatus;
+
 /**
  * Test case for {@link SudokuController}.
  * 
@@ -15,6 +29,21 @@ package com.sudoku.restservice.controller;
  * @author Simon Njenga
  * @since 0.1
  */
-public class SudokuControllerTest {	
+@org.junit.Ignore
+@RunWith(value = SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/applicationContext.xml" })
+@TestExecutionListeners(value = DependencyInjectionTestExecutionListener.class, inheritListeners = true)
+public class SudokuControllerTest {
 	
+	@Autowired
+	private SudokuController sudokuController;
+	
+	private String baseURL;
+    private RestTemplate template;
+
+    @Before
+    public void setUp() throws Exception {
+        this.baseURL = "http://localhost:8080/SudokuRestService/sudokuservice/sudoku";
+        this.template = new RestTemplate();
+    }    
 }

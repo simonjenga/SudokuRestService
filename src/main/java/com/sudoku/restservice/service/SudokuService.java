@@ -50,7 +50,7 @@ public class SudokuService {
 	}
 
     /**
-     * Obtain a list of free cells from the puzzle
+     * Obtain the number of free cells from the puzzle
      */
 	private int getFreeCellList(int[][] grid) {
 		// Determine the number of free cells

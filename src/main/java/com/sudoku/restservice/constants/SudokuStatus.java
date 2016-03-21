@@ -46,12 +46,12 @@ public class SudokuStatus {
     public static final String INVALID_INPUT = "INVALID_INPUT";
 
     /**
-     * Solution found.
+     * Only three arguments are allowed.
      */
-    public static final String SOLUTION_FOUND = "SOLUTION_FOUND";
+    public static final String ONLY_THREE_PARAMETERS_ARE_ALLOWED = "ONLY_THREE_PARAMETERS_ARE_ALLOWED";
 
     /**
-     * Solution not found.
+     * Only number parameters are allowed.
      */
-    public static final String SOLUTION_NOT_FOUND = "SOLUTION_NOT_FOUND";
+    public static final String ONLY_NUMBER_PARAMETERS_ARE_ALLOWED = "ONLY_NUMBER_PARAMETERS_ARE_ALLOWED";
 }

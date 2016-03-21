@@ -14,7 +14,9 @@ import com.sudoku.restservice.constants.SudokuStatus;
 @Service("sudokuService")
 public class SudokuService {
 
-    /** Insert values on Sudoku puzzle */
+    /**
+     *  Insert values on Sudoku puzzle
+     */
 	public String insertValuesOnSudokuPuzzle(int row, int column, int value,
 			int[][] grid) {
 		if ((row < 0 || row > 8) || (column < 0 || column > 8) || (value < 1 || value > 9)) {
@@ -22,9 +24,11 @@ public class SudokuService {
 		} else {
 		    if (this.validateMovesOnSudokuPuzzle(row, column, value, grid).equals(SudokuStatus.VALID_MOVE)) {
 			    grid[row][column] = value;
+			    // if there are empty/free cells, the Sudoku is still not yet complete!
 			    if (this.getFreeCellList(grid) > 0) {
 				    return SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
 			    } else {
+			    	// Sudoku is complete because there are no more empty/free cells
 				    return SudokuStatus.VALID_MOVE_SUDOKU_COMPLETE;
 			    }	
 		    } else {
@@ -33,7 +37,9 @@ public class SudokuService {
 		}
 	}
 
-    /** Validate moves on Sudoku puzzle */
+    /**
+     *  Validate moves on Sudoku puzzle
+     */
 	private String validateMovesOnSudokuPuzzle(int row, int column, int value,
 			int[][] grid) {
 		if (this.isValid(grid, row, column, value)) {
@@ -43,13 +49,16 @@ public class SudokuService {
 		}
 	}
 
-    /** Obtain a list of free cells from the puzzle */
+    /**
+     * Obtain a list of free cells from the puzzle
+     */
 	private int getFreeCellList(int[][] grid) {
 		// Determine the number of free cells
 		int numberOfFreeCells = 0;
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if (grid[i][j] == 0) {
+				String cellValue = String.valueOf(grid[i][j]);
+				if (cellValue == null || cellValue.isEmpty() || cellValue.equals("0")) {
 					numberOfFreeCells++;
 				}
 			}
@@ -58,7 +67,9 @@ public class SudokuService {
 		return numberOfFreeCells;
 	}
 
-    /** Check whether grid[i][j] is valid in the grid */
+    /** 
+     * Check whether grid[i][j] is valid in the grid
+     */
 	private boolean isValid(int[][] grid, int row, int column, int value) {
 		// Check whether grid[i][j] is valid at the i's row
 		for (int inColumn = 0; inColumn < 9; inColumn++) {

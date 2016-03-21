@@ -160,4 +160,23 @@ public class SudokuControllerTest {
         Assert.assertEquals(result, response1.getBody());
         Assert.assertEquals(result, response2.getBody());
     }
+    
+    /**
+     * This test should testControllerInsertInValidInputInSudoku.
+     * 
+     * @throws Exception If something goes wrong
+     */
+    @Test
+	public void testControllerInsertInValidInputInSudoku() throws Exception {
+    	final String result = SudokuStatus.INVALID_INPUT;
+    	
+    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=9&column=9&value=10"), String.class);
+        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("9", "9", "10");
+        
+        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
+        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        
+        Assert.assertEquals(result, response1.getBody());
+        Assert.assertEquals(result, response2.getBody());
+    }
 }

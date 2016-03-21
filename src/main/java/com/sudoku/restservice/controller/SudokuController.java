@@ -2,16 +2,19 @@ package com.sudoku.restservice.controller;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sudoku.restservice.constants.SudokuGrid;
+import com.sudoku.restservice.constants.SudokuStatus;
 import com.sudoku.restservice.service.SudokuService;
+import com.sudoku.restservice.utils.SudokuUtils;
 
 /**
  * This class is the Sudoku controller class used to process HTTP requests and responses to the
@@ -26,16 +29,26 @@ public class SudokuController {
 	@Resource
 	private SudokuService sudokuService;
 	
-	@RequestMapping(value = "/sudoku/{row}/{column}/{value}", method = RequestMethod.GET)
+	@Autowired
+	private SudokuUtils sudokuUtils;
+	
+	@RequestMapping(value = "/sudoku", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<String> validateMovesOnSudoku(@PathVariable("row") Integer row, @PathVariable("column") Integer column,
-			@PathVariable("value") Integer value) {
-		String feedback = sudokuService.insertValuesOnSudokuPuzzle(row, column, value, SudokuGrid.GRID_PROD);
-		
-		if (feedback == null || feedback.isEmpty()) {
-            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-        } else {
-        	return new ResponseEntity<String>(feedback, HttpStatus.OK);
-        }
-	}
+	public ResponseEntity<String> validateMovesOnSudoku(@RequestParam(value = "row", required = true) String row,
+		@RequestParam(value = "column", required = true) String column,
+		@RequestParam(value = "value", required = true) String value) {
+		 
+		if ((row == null || row.isEmpty()) || (column == null || column.isEmpty()) || (value == null || value.isEmpty())) { 
+			return new ResponseEntity<String>(SudokuStatus.ONLY_THREE_PARAMETERS_ARE_ALLOWED, HttpStatus.NOT_FOUND);
+		} else {
+			if(sudokuUtils.isDigit(row) && sudokuUtils.isDigit(column) && sudokuUtils.isDigit(value)) {
+				String feedback = sudokuService.insertValuesOnSudokuPuzzle(sudokuUtils.toInteger(row), sudokuUtils.toInteger(column),
+				    sudokuUtils.toInteger(value), SudokuGrid.GRID_PROD);
+				
+				return new ResponseEntity<String>(feedback, HttpStatus.OK);		        
+			} else {
+				return new ResponseEntity<String>(SudokuStatus.ONLY_NUMBER_PARAMETERS_ARE_ALLOWED, HttpStatus.NOT_FOUND);
+			}
+		}		
+	}	
 }

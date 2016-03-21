@@ -38,9 +38,9 @@ To interact with the RESTful web services, open a web browser and execute any of
 
 `http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=9&column=9&value=15`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=a`
-
 `http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=`
+
+`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=a`
 
 Alternatively, you can use the web browser plugin/addon called RESTClient(a debugger for RESTful web services) to enable you to interact with the REST services.
 

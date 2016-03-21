@@ -26,4 +26,4 @@ This will create a distributable WAR file and deploy it in the embedded Tomcat S
 
 To interact with the RESTful web services, open a web browser and execute any of the following URLs at the address bar:
 
-```http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=5```
+`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=5`

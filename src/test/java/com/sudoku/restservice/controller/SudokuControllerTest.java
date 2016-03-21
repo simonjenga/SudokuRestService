@@ -84,4 +84,23 @@ public class SudokuControllerTest {
         Assert.assertEquals(result, response1.getBody());
         Assert.assertEquals(result, response2.getBody());
     }
+    
+    /**
+     * This test should testControllerInsertValidMoveInColumn.
+     * 
+     * @throws Exception If something goes wrong
+     */
+    @Test
+	public void testControllerInsertValidMoveInColumn() throws Exception {
+    	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+    	
+    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=6&column=4&value=3"), String.class);
+        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("6", "4", "3");
+        
+        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
+        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        
+        Assert.assertEquals(result, response1.getBody());
+        Assert.assertEquals(result, response2.getBody());
+    }
 }

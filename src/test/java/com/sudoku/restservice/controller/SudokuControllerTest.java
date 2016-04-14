@@ -1,5 +1,6 @@
 package com.sudoku.restservice.controller;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -226,5 +227,10 @@ public class SudokuControllerTest {
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
         Assert.assertEquals(result, response.getBody());
+    }
+    
+    @After
+    public void tearDown() throws Exception {
+        // Intentionally empty!
     }
 }

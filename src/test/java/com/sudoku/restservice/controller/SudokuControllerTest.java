@@ -164,4 +164,25 @@ public class SudokuControllerTest {
         
         Assert.assertEquals(result, response.getBody());
     }
+    
+    /**
+     * This test should testControllerInsertInValidInputInSudoku.
+     * 
+     * @throws Exception If something goes wrong
+     */
+    @Test
+	public void testControllerInsertInValidInputInSudoku() throws Exception {
+    	final String result = SudokuStatus.INVALID_INPUT;
+    	
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=9&column=9&value=10")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("9", "9", "10");
+        
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
+        
+        Assert.assertEquals(result, response.getBody());
+    }
 }

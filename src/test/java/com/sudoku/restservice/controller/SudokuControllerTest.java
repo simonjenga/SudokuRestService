@@ -1,35 +1,30 @@
 package com.sudoku.restservice.controller;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.sudoku.restservice.constants.SudokuStatus;
 
 /**
  * Test case for {@link SudokuController}.
  * 
- * This test class is disabled by default as it requires the web service to be deployed and be running
- * on the Server before any of these test(s) can be executed.
- * 
- * In order to make this test class to work, deploy the web service on the server and ensure it is running
- * and then comment out (uncomment) the first annotation {@link org.junit.Ignore} in this class.
- * 
- * Otherwise, the test class throws the following error message: 
- * I/O error: Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
- * 
  * @author Simon Njenga
  * @since 0.1
  */
-@org.junit.Ignore
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/applicationContext.xml" })
 @TestExecutionListeners(value = DependencyInjectionTestExecutionListener.class, inheritListeners = true)
@@ -38,16 +33,14 @@ public class SudokuControllerTest {
 	@Autowired
 	private SudokuController sudokuController;
 	
-	private String baseURL;
-    private RestTemplate template;
-
-    @Before
+	private MockMvc mockMvc;
+	
+	@Before
     public void setUp() throws Exception {
-        this.baseURL = "http://localhost:8080/SudokuRestService/sudokuservice/sudoku";
-        this.template = new RestTemplate();
+    	this.mockMvc = MockMvcBuilders.standaloneSetup(this.sudokuController).build();
     }
-    
-    /**
+	
+	/**
      * This test should testControllerInsertValidMoveIn3x3Cell.
      * 
      * @throws Exception If something goes wrong
@@ -56,14 +49,16 @@ public class SudokuControllerTest {
 	public void testControllerInsertValidMoveIn3x3Cell() throws Exception {
     	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-        ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=0&column=0&value=7"), String.class);
-        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("0", "0", "7");
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=0&column=0&value=7")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("0", "0", "7");
         
-        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
-        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
-        Assert.assertEquals(result, response1.getBody());
-        Assert.assertEquals(result, response2.getBody());
+        Assert.assertEquals(result, response.getBody());
     }
     
     /**
@@ -75,14 +70,16 @@ public class SudokuControllerTest {
 	public void testControllerInsertValidMoveInRow() throws Exception {
     	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=5&column=8&value=4"), String.class);
-        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("5", "8", "4");
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=5&column=8&value=4")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("5", "8", "4");
         
-        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
-        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
-        Assert.assertEquals(result, response1.getBody());
-        Assert.assertEquals(result, response2.getBody());
+        Assert.assertEquals(result, response.getBody());
     }
     
     /**
@@ -94,14 +91,16 @@ public class SudokuControllerTest {
 	public void testControllerInsertValidMoveInColumn() throws Exception {
     	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=6&column=4&value=3"), String.class);
-        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("6", "4", "3");
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=6&column=4&value=3")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+    	ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("6", "4", "3");
         
-        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
-        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
-        Assert.assertEquals(result, response1.getBody());
-        Assert.assertEquals(result, response2.getBody());
+        Assert.assertEquals(result, response.getBody());
     }
     
     /**
@@ -113,14 +112,16 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidMoveIn3x3Cell() throws Exception {
     	final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=7&column=7&value=5"), String.class);
-        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("7", "7", "5");
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=7&column=7&value=5")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+    	ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("7", "7", "5");
         
-        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
-        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
-        Assert.assertEquals(result, response1.getBody());
-        Assert.assertEquals(result, response2.getBody());
+        Assert.assertEquals(result, response.getBody());
     }
     
     /**
@@ -132,14 +133,16 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidMoveInRow() throws Exception {
     	final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=1&column=1&value=8"), String.class);
-        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("1", "1", "8");
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=1&column=1&value=8")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("1", "1", "8");
         
-        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
-        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
-        Assert.assertEquals(result, response1.getBody());
-        Assert.assertEquals(result, response2.getBody());
+        Assert.assertEquals(result, response.getBody());
     }
     
     /**
@@ -151,14 +154,16 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidMoveInColumn() throws Exception {
     	final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=4&column=4&value=6"), String.class);
-        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("4", "4", "6");
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=4&column=4&value=6")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("4", "4", "6");
         
-        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
-        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
-        Assert.assertEquals(result, response1.getBody());
-        Assert.assertEquals(result, response2.getBody());
+        Assert.assertEquals(result, response.getBody());
     }
     
     /**
@@ -170,13 +175,62 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidInputInSudoku() throws Exception {
     	final String result = SudokuStatus.INVALID_INPUT;
     	
-    	ResponseEntity<String> response1 = this.template.getForEntity(this.baseURL.concat("?row=9&column=9&value=10"), String.class);
-        ResponseEntity<String> response2 = this.sudokuController.validateMovesOnSudoku("9", "9", "10");
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=9&column=9&value=10")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("9", "9", "10");
         
-        Assert.assertTrue(response1 != null && response1.hasBody() && !response1.getBody().isEmpty());
-        Assert.assertTrue(response2 != null && response2.hasBody() && !response2.getBody().isEmpty());
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
         
-        Assert.assertEquals(result, response1.getBody());
-        Assert.assertEquals(result, response2.getBody());
+        Assert.assertEquals(result, response.getBody());
+    }
+    
+    /**
+     * This test should testControllerInsertNumbersInputInSudoku.
+     * 
+     * @throws Exception If something goes wrong
+     */
+    @Test
+	public void testControllerInsertNumbersInputInSudoku() throws Exception {
+    	final String result = SudokuStatus.ONLY_NUMBER_PARAMETERS_ARE_ALLOWED;
+    	
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=a&column=b&value=c")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isNotFound())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("a", "b", "c");
+        
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
+        
+        Assert.assertEquals(result, response.getBody());
+    }
+    
+    /**
+     * This test should testControllerInsertEmptyInputInSudoku.
+     * 
+     * @throws Exception If something goes wrong
+     */
+    @Test
+	public void testControllerInsertEmptyInputInSudoku() throws Exception {
+    	final String result = SudokuStatus.ONLY_THREE_PARAMETERS_ARE_ALLOWED;
+    	
+    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=&column=&value=")
+			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
+			.andExpect(MockMvcResultMatchers.status().isNotFound())
+			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+    	
+        ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("", "", "");
+        
+        Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
+        
+        Assert.assertEquals(result, response.getBody());
+    }
+    
+    @After
+    public void tearDown() throws Exception {
+        // Intentionally empty!
     }
 }

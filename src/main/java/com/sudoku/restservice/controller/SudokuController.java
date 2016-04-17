@@ -32,7 +32,7 @@ public class SudokuController {
 	@Autowired
 	private SudokuUtils sudokuUtils;
 	
-	@RequestMapping(value = "/sudoku", method = RequestMethod.GET)
+	@RequestMapping(value = "/sudoku", method = RequestMethod.PUT)
 	@ResponseBody
 	public ResponseEntity<String> validateMovesOnSudoku(@RequestParam(value = "row", required = true) String row,
 		@RequestParam(value = "column", required = true) String column,

@@ -49,7 +49,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertValidMoveIn3x3Cell() throws Exception {
     	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=0&column=0&value=7")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=0&column=0&value=7")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -193,7 +193,7 @@ public class SudokuControllerTest {
      * @throws Exception If something goes wrong
      */
     @Test
-	public void testControllerInsertNumbersInputInSudoku() throws Exception {
+	public void testControllerInsertLettersInputInSudoku() throws Exception {
     	final String result = SudokuStatus.ONLY_NUMBER_PARAMETERS_ARE_ALLOWED;
     	
     	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=a&column=b&value=c")

@@ -175,7 +175,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidInputInSudoku() throws Exception {
     	final String result = SudokuStatus.INVALID_INPUT;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=9&column=9&value=10")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=9&column=9&value=10")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));

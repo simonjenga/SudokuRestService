@@ -49,7 +49,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertValidMoveIn3x3Cell() throws Exception {
     	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=0&column=0&value=7")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=0&column=0&value=7")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -70,7 +70,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertValidMoveInRow() throws Exception {
     	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=5&column=8&value=4")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=5&column=8&value=4")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -91,7 +91,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertValidMoveInColumn() throws Exception {
     	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=6&column=4&value=3")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=6&column=4&value=3")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -112,7 +112,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidMoveIn3x3Cell() throws Exception {
     	final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=7&column=7&value=5")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=7&column=7&value=5")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -133,7 +133,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidMoveInRow() throws Exception {
     	final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=1&column=1&value=8")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=1&column=1&value=8")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -154,7 +154,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidMoveInColumn() throws Exception {
     	final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=4&column=4&value=6")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=4&column=4&value=6")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -175,7 +175,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertInValidInputInSudoku() throws Exception {
     	final String result = SudokuStatus.INVALID_INPUT;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=9&column=9&value=10")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=9&column=9&value=10")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isOk())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -193,10 +193,10 @@ public class SudokuControllerTest {
      * @throws Exception If something goes wrong
      */
     @Test
-	public void testControllerInsertNumbersInputInSudoku() throws Exception {
+	public void testControllerInsertLettersInputInSudoku() throws Exception {
     	final String result = SudokuStatus.ONLY_NUMBER_PARAMETERS_ARE_ALLOWED;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=a&column=b&value=c")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=a&column=b&value=c")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isNotFound())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
@@ -217,7 +217,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertEmptyInputInSudoku() throws Exception {
     	final String result = SudokuStatus.ONLY_THREE_PARAMETERS_ARE_ALLOWED;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=&column=&value=")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=&column=&value=")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isNotFound())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));

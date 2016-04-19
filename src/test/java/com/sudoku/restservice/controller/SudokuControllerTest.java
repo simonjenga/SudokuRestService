@@ -196,7 +196,7 @@ public class SudokuControllerTest {
 	public void testControllerInsertLettersInputInSudoku() throws Exception {
     	final String result = SudokuStatus.ONLY_NUMBER_PARAMETERS_ARE_ALLOWED;
     	
-    	this.mockMvc.perform(MockMvcRequestBuilders.get("/sudoku?row=a&column=b&value=c")
+    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=a&column=b&value=c")
 			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
 			.andExpect(MockMvcResultMatchers.status().isNotFound())
 			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));

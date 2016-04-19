@@ -1,5 +1,6 @@
 package com.sudoku.restservice.service;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -154,4 +155,9 @@ public class SudokuServiceTest {
 		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(8, 0, 6, SudokuGrid.GRID_TEST));
 		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(4, 4, 1, SudokuGrid.GRID_TEST));
 	}
+	
+	@After
+    public void tearDown() throws Exception {
+        // Intentionally empty!
+    }
 }

@@ -24,30 +24,30 @@ import com.sudoku.restservice.constants.SudokuStatus;
 @TestExecutionListeners(value = DependencyInjectionTestExecutionListener.class, inheritListeners = true)
 public class SudokuServiceTest {
 
-	@Autowired
-	private SudokuService sudokuService;
-	
-	/**
+    @Autowired
+    private SudokuService sudokuService;
+
+    /**
      * This test should testInsertValidMoveIn3x3Cell.
      * 
      * @throws Exception If something goes wrong
      */
-	@Test
-	public void testInsertValidMoveIn3x3Cell() throws Exception {
-		final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
-		
-		// insert valid value at first 3x3 cell
-		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(0, 0, 7, SudokuGrid.GRID_PROD));
-		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(0, 1, 9, SudokuGrid.GRID_PROD));
-		
-		// insert valid value at middle 3x3 cell
-		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(3, 3, 8, SudokuGrid.GRID_PROD));
-		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(5, 5, 3, SudokuGrid.GRID_PROD));
-		
-		// insert valid value at last 3x3 cell
-		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(8, 8, 3, SudokuGrid.GRID_PROD));
-		Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(6, 6, 6, SudokuGrid.GRID_PROD));
-	}
+    @Test
+    public void testInsertValidMoveIn3x3Cell() throws Exception {
+        final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+
+        // insert valid value at first 3x3 cell
+        Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(0, 0, 7, SudokuGrid.GRID_PROD));
+        Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(0, 1, 9, SudokuGrid.GRID_PROD));
+
+        // insert valid value at middle 3x3 cell
+        Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(3, 3, 8, SudokuGrid.GRID_PROD));
+        Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(5, 5, 3, SudokuGrid.GRID_PROD));
+
+        // insert valid value at last 3x3 cell
+        Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(8, 8, 3, SudokuGrid.GRID_PROD));
+        Assert.assertEquals(result, this.sudokuService.insertValuesOnSudokuPuzzle(6, 6, 6, SudokuGrid.GRID_PROD));
+    }
 	
 	/**
      * This test should testInsertValidMoveInRow.

@@ -29,17 +29,17 @@ import com.sudoku.restservice.constants.SudokuStatus;
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/applicationContext.xml" })
 @TestExecutionListeners(value = DependencyInjectionTestExecutionListener.class, inheritListeners = true)
 public class SudokuControllerTest {
-	
-	@Autowired
-	private SudokuController sudokuController;
-	
-	private MockMvc mockMvc;
-	
-	@Before
+
+    @Autowired
+    private SudokuController sudokuController;
+
+    private MockMvc mockMvc;
+
+    @Before
     public void setUp() throws Exception {
-    	this.mockMvc = MockMvcBuilders.standaloneSetup(this.sudokuController).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(this.sudokuController).build();
     }
-	
+
 	/**
      * This test should testControllerInsertValidMoveIn3x3Cell.
      * 

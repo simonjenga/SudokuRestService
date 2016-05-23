@@ -40,27 +40,27 @@ public class SudokuControllerTest {
         this.mockMvc = MockMvcBuilders.standaloneSetup(this.sudokuController).build();
     }
 
-	/**
+    /**
      * This test should testControllerInsertValidMoveIn3x3Cell.
      * 
      * @throws Exception If something goes wrong
      */
     @Test
-	public void testControllerInsertValidMoveIn3x3Cell() throws Exception {
-    	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
-    	
-    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=0&column=0&value=7")
-			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
-			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
-    	
+    public void testControllerInsertValidMoveIn3x3Cell() throws Exception {
+        final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=0&column=0&value=7")
+            .contentType(MediaType.TEXT_PLAIN).content("{ }"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("0", "0", "7");
-        
+
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-        
+
         Assert.assertEquals(result, response.getBody());
     }
-    
+
     /**
      * This test should testControllerInsertValidMoveInRow.
      * 

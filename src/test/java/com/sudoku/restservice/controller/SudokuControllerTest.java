@@ -67,18 +67,18 @@ public class SudokuControllerTest {
      * @throws Exception If something goes wrong
      */
     @Test
-	public void testControllerInsertValidMoveInRow() throws Exception {
-    	final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
-    	
-    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=5&column=8&value=4")
-			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
-			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
-    	
+    public void testControllerInsertValidMoveInRow() throws Exception {
+        final String result = SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=5&column=8&value=4")
+            .contentType(MediaType.TEXT_PLAIN).content("{ }"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("5", "8", "4");
-        
+
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-        
+
         Assert.assertEquals(result, response.getBody());
     }
     

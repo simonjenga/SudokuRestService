@@ -151,21 +151,21 @@ public class SudokuControllerTest {
      * @throws Exception If something goes wrong
      */
     @Test
-	public void testControllerInsertInValidMoveInColumn() throws Exception {
-    	final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
-    	
-    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=4&column=4&value=6")
-			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
-			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
-    	
+    public void testControllerInsertInValidMoveInColumn() throws Exception {
+        final String result = SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=4&column=4&value=6")
+            .contentType(MediaType.TEXT_PLAIN).content("{ }"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("4", "4", "6");
-        
+
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-        
+
         Assert.assertEquals(result, response.getBody());
     }
-    
+
     /**
      * This test should testControllerInsertInValidInputInSudoku.
      * 

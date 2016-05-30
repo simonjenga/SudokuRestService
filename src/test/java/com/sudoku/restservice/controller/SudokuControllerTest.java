@@ -214,21 +214,21 @@ public class SudokuControllerTest {
      * @throws Exception If something goes wrong
      */
     @Test
-	public void testControllerInsertEmptyInputInSudoku() throws Exception {
-    	final String result = SudokuStatus.ONLY_THREE_PARAMETERS_ARE_ALLOWED;
-    	
-    	this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=&column=&value=")
-			.contentType(MediaType.TEXT_PLAIN).content("{ }"))
-			.andExpect(MockMvcResultMatchers.status().isNotFound())
-			.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
-    	
+    public void testControllerInsertEmptyInputInSudoku() throws Exception {
+        final String result = SudokuStatus.ONLY_THREE_PARAMETERS_ARE_ALLOWED;
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/sudoku?row=&column=&value=")
+            .contentType(MediaType.TEXT_PLAIN).content("{ }"))
+            .andExpect(MockMvcResultMatchers.status().isNotFound())
+            .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"));
+
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("", "", "");
-        
+
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-        
+
         Assert.assertEquals(result, response.getBody());
     }
-    
+
     @After
     public void tearDown() throws Exception {
         // Intentionally empty!

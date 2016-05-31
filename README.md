@@ -24,28 +24,26 @@ This project includes an embedded Tomcat Server as a plug-in in the Maven Build 
 
 This will create a distributable WAR file and deploy it in the embedded Tomcat Server.
 
-To interact with the RESTful web services, open a web browser and execute any of the following URLs at the address bar:
+To interact with the RESTful web services using Git Bash or a Console window, execute any of the following commands:
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=5`
+`curl -X PUT -L -G -d "row=7&column=7&value=5" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=3&column=3&value=8`
+`curl -X PUT -L -G -d "row=3&column=3&value=8" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=5&column=8&value=4`
+`curl -X PUT -L -G -d "row=5&column=8&value=4" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=-1&column=9&value=10`
+`curl -X PUT -L -G -d "row=-1&column=9&value=10" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=4&column=3&value=2`
+`curl -X PUT -L -G -d "row=4&column=3&value=2" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=9&column=9&value=15`
+`curl -X PUT -L -G -d "row=9&column=9&value=15" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=`
+`curl -X PUT -L -G -d "row=7&column=7&value=" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
-`http://localhost:8080/SudokuRestService/sudokuservice/sudoku?row=7&column=7&value=a`
+`curl -X PUT -L -G -d "row=7&column=7&value=a" http://localhost:8080/SudokuRestService/sudokuservice/sudoku`
 
 Alternatively, you can use the web browser plugin/add-on called RESTClient (a debugger for RESTful web services) or you can also use Postman so as
 to enable you to interact with the RESTful web services.
-
-You can use the web browser plugin/add-on called RESTClient (a debugger for RESTful web services) to enable you to interact with the REST services.
 
 To run Unit tests in this project, execute the following:
 

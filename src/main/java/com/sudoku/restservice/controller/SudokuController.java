@@ -26,29 +26,35 @@ import com.sudoku.restservice.utils.SudokuUtils;
 @Controller
 public class SudokuController {
 
-	@Resource
-	private SudokuService sudokuService;
-	
-	@Autowired
-	private SudokuUtils sudokuUtils;
-	
-	@RequestMapping(value = "/sudoku", method = RequestMethod.PUT)
-	@ResponseBody
-	public ResponseEntity<String> validateMovesOnSudoku(@RequestParam(value = "row", required = true) String row,
-		@RequestParam(value = "column", required = true) String column,
-		@RequestParam(value = "value", required = true) String value) {
-		 
-		if ((row == null || row.isEmpty()) || (column == null || column.isEmpty()) || (value == null || value.isEmpty())) { 
-			return new ResponseEntity<String>(SudokuStatus.ONLY_THREE_PARAMETERS_ARE_ALLOWED, HttpStatus.NOT_FOUND);
-		} else {
-			if(sudokuUtils.isDigit(row) && sudokuUtils.isDigit(column) && sudokuUtils.isDigit(value)) {
-				String feedback = sudokuService.insertValuesOnSudokuPuzzle(sudokuUtils.toInteger(row), sudokuUtils.toInteger(column),
-				    sudokuUtils.toInteger(value), SudokuGrid.GRID_PROD);
-				
-				return new ResponseEntity<String>(feedback, HttpStatus.OK);		        
-			} else {
-				return new ResponseEntity<String>(SudokuStatus.ONLY_NUMBER_PARAMETERS_ARE_ALLOWED, HttpStatus.NOT_FOUND);
-			}
-		}		
-	}	
+    @Resource
+    private SudokuService sudokuService;
+
+    @Autowired
+    private SudokuUtils sudokuUtils;
+
+    @RequestMapping(value = "/sudoku", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity<String> validateMovesOnSudoku(@RequestParam(value = "row", required = true) String row,
+        @RequestParam(value = "column", required = true) String column,
+        @RequestParam(value = "value", required = true) String value) {
+
+        if ((row == null || row.isEmpty()) || (column == null || column.isEmpty()) || (value == null || value.isEmpty())) {
+            return new ResponseEntity<String>(SudokuStatus.ONLY_THREE_PARAMETERS_ARE_ALLOWED, HttpStatus.NOT_FOUND);
+        } else {
+            if(sudokuUtils.isDigit(row) && sudokuUtils.isDigit(column) && sudokuUtils.isDigit(value)) {
+                return new ResponseEntity<String>(this.responseFeedBack(row, column, value), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<String>(SudokuStatus.ONLY_NUMBER_PARAMETERS_ARE_ALLOWED, HttpStatus.NOT_FOUND);
+            }
+        }
+    }
+
+    /**
+     * Insert values on the Sudoku puzzle and obtain the result
+     */
+    private String responseFeedBack(String row, String column, String value) {
+        return sudokuService.insertValuesOnSudokuPuzzle(
+            sudokuUtils.toInteger(row), sudokuUtils.toInteger(column), sudokuUtils.toInteger(value), SudokuGrid.GRID_PROD
+        );
+    }
 }

@@ -60,7 +60,7 @@ public class SudokuService {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				String cellValue = String.valueOf(grid[i][j]);
-				if (cellValue == null || cellValue.isEmpty() || cellValue.equals("0")) {
+				if (cellValue.isEmpty() || cellValue.equals("0")) {
 					numberOfFreeCells++;
 				}
 			}

@@ -57,7 +57,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("0", "0", "7");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -78,7 +77,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("5", "8", "4");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -99,7 +97,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("6", "4", "3");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -120,7 +117,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("7", "7", "5");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -141,7 +137,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("1", "1", "8");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -162,7 +157,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("4", "4", "6");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -183,7 +177,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("9", "9", "10");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -204,7 +197,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("a", "b", "c");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 
@@ -225,7 +217,6 @@ public class SudokuControllerTest {
         ResponseEntity<String> response = this.sudokuController.validateMovesOnSudoku("", "", "");
 
         Assert.assertTrue(response != null && response.hasBody() && !response.getBody().isEmpty());
-
         Assert.assertEquals(result, response.getBody());
     }
 

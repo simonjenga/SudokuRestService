@@ -14,30 +14,29 @@ import com.sudoku.restservice.constants.SudokuStatus;
 public class SudokuService {
 
     /**
-     *  Insert values on the Sudoku puzzle
+     * Insert values on the Sudoku puzzle
      */
-	public String insertValuesOnSudokuPuzzle(int row, int column, int value,
-			int[][] grid) {
-		if ((row < 0 || row > 8) || (column < 0 || column > 8) || (value < 1 || value > 9)) {
-		    return SudokuStatus.INVALID_INPUT;
-		} else {
-		    if (this.validateMovesOnSudokuPuzzle(row, column, value, grid).equals(SudokuStatus.VALID_MOVE)) {
-				// insert that valid value/move into the Sudoku puzzle				
-			    grid[row][column] = value;
-				
-				//check if the Sudoku puzzle has been filled up with values
-			    if (this.getFreeCellList(grid) == 0) {
-				    // Sudoku puzzle is complete because there are no more empty/free cells
-				    return SudokuStatus.VALID_MOVE_SUDOKU_COMPLETE;
-			    } else {
-			    	// Sudoku puzzle is still not yet complete! because there are more empty/free cells
-					return SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
-			    }	
-		    } else {
-			    return SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
-		    }
-		}
-	}
+    public String insertValuesOnSudokuPuzzle(int row, int column, int value, int[][] grid) {
+        if ((row < 0 || row > 8) || (column < 0 || column > 8) || (value < 1 || value > 9)) {
+            return SudokuStatus.INVALID_INPUT;
+        } else {
+            if (this.validateMovesOnSudokuPuzzle(row, column, value, grid).equals(SudokuStatus.VALID_MOVE)) {
+                // insert that valid value/move into the Sudoku puzzle
+                grid[row][column] = value;
+
+                //check if the Sudoku puzzle has been filled up with values
+                if (this.getFreeCellList(grid) == 0) {
+                    // Sudoku puzzle is complete because there are no more empty/free cells
+                    return SudokuStatus.VALID_MOVE_SUDOKU_COMPLETE;
+                } else {
+                    // Sudoku puzzle is still not yet complete! because there are more empty/free cells
+                    return SudokuStatus.VALID_MOVE_SUDOKU_NOT_COMPLETE;
+                }
+            } else {
+                return SudokuStatus.INVALID_MOVE_SUDOKU_NOT_COMPLETE;
+            }
+        }
+    }
 
     /**
      *  Validate moves on the Sudoku puzzle

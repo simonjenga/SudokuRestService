@@ -39,16 +39,15 @@ public class SudokuService {
     }
 
     /**
-     *  Validate moves on the Sudoku puzzle
+     * Validate moves on the Sudoku puzzle
      */
-	private String validateMovesOnSudokuPuzzle(int row, int column, int value,
-			int[][] grid) {
-		if (this.isValid(grid, row, column, value)) {
-			return SudokuStatus.VALID_MOVE;
-		} else {
-			return SudokuStatus.INVALID_MOVE;
-		}
-	}
+    private String validateMovesOnSudokuPuzzle(int row, int column, int value, int[][] grid) {
+        if (this.isValid(grid, row, column, value)) {
+            return SudokuStatus.VALID_MOVE;
+        } else {
+            return SudokuStatus.INVALID_MOVE;
+        }
+    }
 
     /**
      * Obtain the number of free cells from the Sudoku puzzle

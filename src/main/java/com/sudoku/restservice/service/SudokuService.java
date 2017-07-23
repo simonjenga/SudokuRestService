@@ -52,20 +52,20 @@ public class SudokuService {
     /**
      * Obtain the number of free cells from the Sudoku puzzle
      */
-	private int getFreeCellList(int[][] grid) {
-		// Determine the number of free cells
-		int numberOfFreeCells = 0;
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				String cellValue = String.valueOf(grid[i][j]);
-				if (cellValue.isEmpty() || cellValue.equals("0")) {
-					numberOfFreeCells++;
-				}
-			}
-		}
-		 // return the number of free cells from the Sudoku puzzle
-		return numberOfFreeCells;
-	}
+    private int getFreeCellList(int[][] grid) {
+        // Determine the number of free cells
+        int numberOfFreeCells = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                String cellValue = String.valueOf(grid[i][j]);
+                if (cellValue.isEmpty() || cellValue.equals("0")) {
+                    numberOfFreeCells++;
+                }
+            }
+        }
+        // return the number of free cells from the Sudoku puzzle
+        return numberOfFreeCells;
+    }
 
     /** 
      * Check whether grid[i][j] is valid in the grid

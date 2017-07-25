@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.sudoku.restservice.constants.SudokuStatus;
 
 /**
- * This is the Sudoku service class that contains the logic to solving the Sudoku puzzle.
+ * This service class {@code SudokuService} contains the logic for solving the Sudoku puzzle.
  * 
  * @author Simon Njenga
  * @since 0.1

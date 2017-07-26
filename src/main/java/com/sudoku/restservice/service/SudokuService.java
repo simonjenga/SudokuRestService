@@ -14,7 +14,13 @@ import com.sudoku.restservice.constants.SudokuStatus;
 public class SudokuService {
 
     /**
-     * Insert values on the Sudoku puzzle
+     * Inserts the specified value on the Sudoku grid puzzle.
+     *
+     * @param row, the specified row in the Sudoku grid puzzle.
+     * @param column, the specified column in the Sudoku grid puzzle.
+     * @param value, the value to be inserted in the Sudoku grid puzzle.
+     * @param grid, the Sudoku grid puzzle.
+     * @return the status result of the action that has been performed.
      */
     public String insertValuesOnSudokuPuzzle(int row, int column, int value, int[][] grid) {
         if ((row < 0 || row > 8) || (column < 0 || column > 8) || (value < 1 || value > 9)) {
@@ -39,7 +45,13 @@ public class SudokuService {
     }
 
     /**
-     * Validate moves on the Sudoku puzzle
+     * Validate moves on the Sudoku grid puzzle.
+     *
+     * @param row, the specified row in the Sudoku grid puzzle.
+     * @param column, the specified column in the Sudoku grid puzzle.
+     * @param value, the value to be inserted in the Sudoku grid puzzle.
+     * @param grid, the Sudoku grid puzzle.
+     * @return the status result of the action that has been performed.
      */
     private String validateMovesOnSudokuPuzzle(int row, int column, int value, int[][] grid) {
         if (this.isValid(grid, row, column, value)) {
@@ -50,7 +62,10 @@ public class SudokuService {
     }
 
     /**
-     * Obtain the number of free cells from the Sudoku puzzle
+     * Obtain the number of free cells from the Sudoku grid puzzle.
+     *
+     * @param grid, the Sudoku grid puzzle.
+     * @return the number of free cells in the Sudoku grid puzzle.
      */
     private int getFreeCellList(int[][] grid) {
         // Determine the number of free cells
@@ -68,7 +83,13 @@ public class SudokuService {
     }
 
     /**
-     * Check whether grid[i][j] is valid in the grid
+     * Is the specified value valid in the specified row and column in the Sudoku grid puzzle?
+     *
+     * @param grid, the Sudoku grid puzzle.
+     * @param row, the specified row in the Sudoku grid puzzle.
+     * @param column, the specified column in the Sudoku grid puzzle.
+     * @param value, the value to be checked if it is valid in the Sudoku grid puzzle.
+     * @return true if the value is valid; false otherwise
      */
     private boolean isValid(int[][] grid, int row, int column, int value) {
         // Check whether grid[i][j] is valid at the i's row

@@ -17,8 +17,8 @@ import com.sudoku.restservice.service.SudokuService;
 import com.sudoku.restservice.utils.SudokuUtils;
 
 /**
- * This class is the Sudoku controller class used to process HTTP requests and responses to the
- * Sudoku rest service.
+ * This class {@code SudokuController} is used to process HTTP requests and responses to the
+ * service class {@code SudokuService} in this project.
  *
  * @author Simon Njenga
  * @since 0.1

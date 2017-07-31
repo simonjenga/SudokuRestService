@@ -89,7 +89,7 @@ public class SudokuService {
      * @param row, the specified row in the Sudoku grid puzzle.
      * @param column, the specified column in the Sudoku grid puzzle.
      * @param value, the value to be checked if it is valid in the Sudoku grid puzzle.
-     * @return true if the value is valid; false otherwise
+     * @return {@code true} if the value is valid; {@code false} otherwise
      */
     private boolean isValid(int[][] grid, int row, int column, int value) {
         // Check whether grid[i][j] is valid at the i's row

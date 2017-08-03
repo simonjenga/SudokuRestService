@@ -183,7 +183,7 @@
                 <version>2.3.2</version>
                 <configuration>
                     <fork>true</fork>					
-                    <encoding>UTF-8</encoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>	
             <plugin>
@@ -191,7 +191,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.1</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>	
             <plugin>

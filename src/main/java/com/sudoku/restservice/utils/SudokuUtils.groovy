@@ -19,4 +19,13 @@ public class SudokuUtils {
     public boolean isDigit(String input) {
         return Character.isDigit(input.toCharArray()[0]);
     }
+
+    /**
+     * Convert the supplied {@code String} input parameter into an {@code Integer} value.
+     * @param input the input parameter to be converted.
+     * @return Returns an {@code Integer} object holding the value of the specified {@code String}.
+     */
+    public Integer toInteger(String input) {
+        return Integer.valueOf(input);
+    }
 }

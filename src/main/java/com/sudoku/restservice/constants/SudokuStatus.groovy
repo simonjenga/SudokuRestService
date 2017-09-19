@@ -9,4 +9,11 @@ package com.sudoku.restservice.constants
  */
 public class SudokuStatus {
 
+    /**
+     * Private constructor.
+     */
+    private SudokuStatus() {
+        throw new IllegalStateException("Utility class - cannot instantiate!");
+    }
+
 }

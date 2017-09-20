@@ -16,4 +16,14 @@ public class SudokuStatus {
         throw new IllegalStateException("Utility class - cannot instantiate!");
     }
 
+    /**
+     * Valid move.
+     */
+    public static final String VALID_MOVE = "VALID_MOVE";
+
+    /**
+     * Invalid move.
+     */
+    public static final String INVALID_MOVE = "INVALID_MOVE";
+
 }

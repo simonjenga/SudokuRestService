@@ -36,4 +36,14 @@ public class SudokuStatus {
      */
     public static final String VALID_MOVE_SUDOKU_COMPLETE = "VALID_MOVE_SUDOKU_COMPLETE";
 
+    /**
+     * Valid move sudoku not complete.
+     */
+    public static final String VALID_MOVE_SUDOKU_NOT_COMPLETE = "VALID_MOVE_SUDOKU_NOT_COMPLETE";
+
+    /**
+     * Valid move sudoku not complete.
+     */
+    public static final String INVALID_MOVE_SUDOKU_NOT_COMPLETE = "INVALID_MOVE_SUDOKU_NOT_COMPLETE";
+
 }

@@ -46,4 +46,14 @@ public class SudokuStatus {
      */
     public static final String INVALID_MOVE_SUDOKU_NOT_COMPLETE = "INVALID_MOVE_SUDOKU_NOT_COMPLETE";
 
+    /**
+     * Only three arguments are allowed.
+     */
+    public static final String ONLY_THREE_PARAMETERS_ARE_ALLOWED = "ONLY_THREE_PARAMETERS_ARE_ALLOWED";
+
+    /**
+     * Only number parameters are allowed.
+     */
+    public static final String ONLY_NUMBER_PARAMETERS_ARE_ALLOWED = "ONLY_NUMBER_PARAMETERS_ARE_ALLOWED";
+
 }

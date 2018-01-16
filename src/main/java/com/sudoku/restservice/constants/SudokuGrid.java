@@ -1,8 +1,8 @@
 package com.sudoku.restservice.constants;
 
 /**
- * This class contains the multi-dimensional constant(s) for the Sudoku array matrix
- * grid used within the Sudoku rest service project.
+ * This class {@code SudokuGrid} contains the multi-dimensional constant(s) for the Sudoku grid array
+ * matrix used within this Sudoku rest service project.
  *
  * @author Simon Njenga
  * @since 0.1

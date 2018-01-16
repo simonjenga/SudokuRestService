@@ -3,7 +3,7 @@ package com.sudoku.restservice.utils;
 import org.springframework.stereotype.Component;
 
 /**
- * This class contains miscellaneous utility methods used within the Sudoku rest service project.
+ * This utility class {@code SudokuUtils} contains methods used within this project.
  *
  * @author Simon Njenga
  * @since 0.1

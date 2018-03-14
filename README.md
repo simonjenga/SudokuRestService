@@ -16,7 +16,7 @@ To run Maven build, execute the following from a console/command prompt with the
 
 This will create a distributable and deployable WAR file for the web application. This WAR file can be deployed on the latest versions of web servers/containers e.g Jetty, Tomcat, WildFly, JBoss etc.
 
-This project includes a plug-in in the Maven Build file for deploying into the WildFly 8.2.0.Final Server. In order to build and deploy it to this server, execute the following command:
+This project includes a plug-in in the Maven Build file for deploying into the WildFly 8.2.0.Final Server. In order to build and deploy it to this Server, execute the following command:
 
 ```mvn clean package antrun:run -Pdeploy-war -DskipTests -Dinvoker.skip=true```
 

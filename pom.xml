@@ -290,6 +290,8 @@
 
     <profiles>
         <profile>
+            <!-- This "deploy-war" profile is used for copying this projects' war file to Wildfly Server >= 8.0.0.Final
+                using this command: mvn clean package antrun:run -Pdeploy-war -->
             <id>deploy-war</id>
             <build>
                 <plugins>

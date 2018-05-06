@@ -25,6 +25,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- servlet-mapping for serving dynamic resources such as REST URL's and request mappings -->
     <servlet-mapping>
         <servlet-name>sudoku</servlet-name>
         <url-pattern>/sudokuservice/*</url-pattern>

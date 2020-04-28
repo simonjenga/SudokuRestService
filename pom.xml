@@ -136,7 +136,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13</version>
             <scope>test</scope>
         </dependency>
 
@@ -284,6 +284,17 @@
                 </configuration>
                 <!-- Jetty version <= 9.2.x requires Java 7 while Jetty version >= 9.3.x requires Java 8. -->
                 <!-- http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-maven-plugin -->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomee.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>8.0.0</version>
+                <configuration>
+                    <!-- Which flavor of TomEE to use? webprofile, plus, plume e.t.c default = webprofile -->
+                    <tomeeClassifier>plume</tomeeClassifier>
+                    <args>-Xmx512m -XX:PermSize=256m</args>
+                </configuration>
+                <!-- https://mvnrepository.com/artifact/org.apache.tomee.maven/tomee-maven-plugin -->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

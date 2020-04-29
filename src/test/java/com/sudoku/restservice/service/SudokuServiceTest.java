@@ -2,6 +2,7 @@ package com.sudoku.restservice.service;
 
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class SudokuServiceTest {
 
     @Autowired
     private SudokuService sudokuService;
+
+    @Before
+    public void setUp() throws Exception {
+        // Intentionally empty!
+    }
 
     /**
      * This test should testInsertValidMoveIn3x3Cell.

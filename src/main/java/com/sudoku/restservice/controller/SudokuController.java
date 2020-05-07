@@ -24,7 +24,7 @@ import com.sudoku.restservice.utils.SudokuUtils;
 @Controller
 public class SudokuController {
 
-	@Autowired
+    @Autowired
     private SudokuService sudokuService;
 
     @Autowired

@@ -8,7 +8,7 @@ to recognise and indicate if the Sudoku is finished with the current move. A cus
 Building The Project
 ====================
 
-This project compiles with ```JDK >= 1.5``` and uses ```Maven >= 3.1.1``` as the build tool and also to manage the project dependencies.
+This project compiles with ```JDK >= 1.7``` and uses ```Maven >= 3.1.1``` as the build tool and also to manage the project dependencies.
 
 To run a full Maven build, execute the following from a console/command prompt with the project root directory as the top level directory:
 
